@@ -12,7 +12,7 @@ This project is being developed incrementally, following the same mindset used i
 
 ## Why this project?
 
-Airline systems involve many real-world business concepts such as customers, flights, reservations, employees, airports, baggage, and crew assignments.
+Airline systems involve many real-world business concepts such as customers, flights, reservations, employees, airports, and baggage.
 
 Because of this complexity, they provide an excellent opportunity to practice object-oriented design, domain modeling, and software architecture while building a realistic application.
 
