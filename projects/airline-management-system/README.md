@@ -163,3 +163,21 @@ The project is following an architecture-first approach, where the domain is mod
 Software Engineering Student
 
 This repository is part of my software engineering portfolio and documents my learning journey while building production-style software projects.
+
+
+
+## Engineering Journal
+
+This project is being developed incrementally.
+
+Instead of writing code immediately, every major feature follows this workflow:
+
+1. Understand the business problem.
+2. Design the solution using UML.
+3. Review class responsibilities.
+4. Implement the feature.
+5. Refactor if necessary.
+6. Document architectural decisions.
+7. Commit changes to Git.
+
+This journal reflects the engineering mindset used throughout the project.
