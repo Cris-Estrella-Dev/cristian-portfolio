@@ -26,3 +26,6 @@ class Flight:
         print(f"Departure Time: {self.__departure_time}")
         print(f"Arrival Time: {self.__arrival_time}")
         print(f"Status: {self.__status}")
+
+    def __str__(self):
+        return f"{self.__flight_number})"

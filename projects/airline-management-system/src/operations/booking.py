@@ -7,6 +7,22 @@ class Booking:
         self.__status = status
         self.__total_price = total_price
 
+
+    def get_booking_id(self):
+        return self.__booking_id
+    
+    def get_confirmation_number(self):
+        return self.__confirmation_number
+    
+    def get_booking_date(self):
+        return self.__booking_date
+    
+    def get_status(self):
+        return self.__status
+    
+    def get_total_price(self):
+        return self.__total_price
+
     def add_flight_reservation(self):
         pass
 
