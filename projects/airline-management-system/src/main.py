@@ -1,9 +1,5 @@
 from operations.airport import Airport
-from employees.customer_service_agent import CustomerServiceAgent
-from employees.flight_attendant import FlightAttendant
-from employees.manager import Manager
-from employees.ops_agent import OpsAgent
-
+from operations.flight import Flight
 
 
 lga = Airport(
@@ -14,71 +10,21 @@ lga = Airport(
     "USA"
 )
 
-dal = Airport(
-    "DAL",
-    "Dallas Love Field Airport",
-    "Dallas",
-    "TX",
-    "USA"
-)
-
 mdw = Airport(
     "MDW",
-    "Chicago Midway international airport",
+    "Chicago Midway International Airport",
     "Chicago",
     "IL",
     "USA"
 )
 
-bna = Airport(
-    "BNA",
-    "Nashville International Airport",
-    "Nashville",
-    "TN",
-    "USA"
-)
-
-
-csa = CustomerServiceAgent(
-    "E001",
-    "Cristian",
-    "Estrella",
-    "cristian@example.com",
+flight = Flight(
+    "WN123",
     lga,
-    "Ticket Counter"
-)
-
-fligh_attendant = FlightAttendant(
-    "E002",
-    "Nawel",
-    "Taveras",
-    "nawel@example.com",
-    dal,
-    "Dal"
-)
-
-    
-    
-manager = Manager(
-    "E003",
-    "Dario",
-    "Di Giacomo",
-    "dario@example.com",
     mdw,
-    "Station manager"
+    "08:30 AM",
+    "10:15 AM",
+    "On Time"
 )
 
-
-ops_agent = OpsAgent(
-
-    "E004",
-    "Nicole",
-    "Estrella",
-    "nicole@example.com",
-    bna,
-    "57"
-)
-
-
-
-ops_agent.show_info()
+flight.show_info()
