@@ -4,7 +4,7 @@ from employees.employee import Employee
 class Manager(Employee):
     def __init__(self, employee_id, first_name, last_name, email, base_airport,department):
         super().__init__(employee_id, first_name, last_name, email, base_airport)
-        self._department = department
+        self.__department = department
 
     def show_info(self):
         print("Role: Manager")

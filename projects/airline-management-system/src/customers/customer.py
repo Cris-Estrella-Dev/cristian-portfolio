@@ -7,25 +7,19 @@ class Customer():
         self._email = email
         self._phone_number = phone_number
 
-    def get_customer_id(self):
-        return self._customer_id
-
+    
     def get_full_name(self):
-        return f"{self._first_name} {self._last_name}"
-    
-    def get_email(self):
-        return self._email
-    
-    def get_phone_number(self):
-        return self._phone_number
-    
-    
+        return f"{self.__first_name} {self.__last_name}"
+
+
     def show_info(self):
 
-        print(f"Customer ID: {self.get_customer_id()}")
+        print(f"Customer ID: {self._customer_id}")
         print(f"Full name: {self.get_full_name()}")
-        print(f"Email: {self.get_email()}")
-        print(f"Phone number: {self.get_phone_number()}")
+        print(f"Email: {self._email}")
+        print(f"Phone number: {self._phone_number}")
+
+    
 
 
     

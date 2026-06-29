@@ -5,7 +5,7 @@ class OpsAgent(Employee):
 
     def __init__(self, employee_id, first_name, last_name, email, base_airport,assigned_gate):
         super().__init__(employee_id, first_name, last_name, email, base_airport)
-        self._assigned_gate = assigned_gate
+        self.__assigned_gate = assigned_gate
 
     def show_info(self):
         print("Role: OpsAgent")
