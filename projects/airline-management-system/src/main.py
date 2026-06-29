@@ -1,14 +1,13 @@
-from customers.customer import Customer
+
+from operations.baggage import Baggage
 
 
-customer = Customer(
-    "C001",
-    "Cristian",
-    "Estrella",
-    "cristian@example.com",
-    "555-123-4567"
+
+baggage = Baggage(
+
+    "B001",
+    "22D"
+
 )
 
-customer.show_info()
-
-print(customer)
+baggage.show_info()
