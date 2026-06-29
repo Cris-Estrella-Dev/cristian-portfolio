@@ -1,30 +1,14 @@
-from operations.airport import Airport
-from operations.flight import Flight
+from customers.customer import Customer
 
 
-lga = Airport(
-    "LGA",
-    "LaGuardia Airport",
-    "New York",
-    "NY",
-    "USA"
+customer = Customer(
+    "C001",
+    "Cristian",
+    "Estrella",
+    "cristian@example.com",
+    "555-123-4567"
 )
 
-mdw = Airport(
-    "MDW",
-    "Chicago Midway International Airport",
-    "Chicago",
-    "IL",
-    "USA"
-)
+customer.show_info()
 
-flight = Flight(
-    "WN123",
-    lga,
-    mdw,
-    "08:30 AM",
-    "10:15 AM",
-    "On Time"
-)
-
-flight.show_info()
+print(customer)
