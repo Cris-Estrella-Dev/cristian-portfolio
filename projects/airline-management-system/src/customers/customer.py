@@ -23,6 +23,8 @@ class Customer:
         print(f"Full name: {self.get_full_name()}")
         print(f"Email: {self.__email}")
         print(f"Phone number: {self.__phone_number}")
-
+    
     def __str__(self):
         return f"{self.__customer_id} - {self.get_full_name()}"
+    
+    

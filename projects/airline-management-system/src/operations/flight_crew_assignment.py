@@ -22,7 +22,7 @@ class FlightCrewAssignment:
     def show_crew(self):
         print(f"Assignment ID: {self.__assignment_id}")
         print(f"Flight: {self.__flight}")
-
+        
         print("\nPilots:")
         if not self.__pilots:
             print("No pilots added.")

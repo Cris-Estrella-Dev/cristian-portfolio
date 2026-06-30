@@ -28,4 +28,4 @@ class Flight:
         print(f"Status: {self.__status}")
 
     def __str__(self):
-        return f"{self.__flight_number})"
+        return f"{self.__flight_number}"

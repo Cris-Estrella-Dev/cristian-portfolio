@@ -1,87 +1,62 @@
-from operations.airport import Airport
+from employees.employee import Employee
 from operations.flight import Flight
-from operations.flight_crew_assignment import FlightCrewAssignment
+from employees.ops_agent import OpsAgent
+from employees.ramp_agent import RampAgent
+from operations.flight_staff_assignment import FlightStaffAssignment
+from operations.airport import Airport
 
-from employees.pilot import Pilot
-from employees.flight_attendant import FlightAttendant
 
 
-# Airports
 lga = Airport(
+
     "LGA",
     "LaGuardia Airport",
+    "Queens, New York City",
     "New York",
-    "NY",
     "USA"
+
 )
 
-mdw = Airport(
-    "MDW",
-    "Chicago Midway International Airport",
-    "Chicago",
-    "IL",
-    "USA"
-)
-
-# Flight
 flight = Flight(
-    "WN123",
+
+    "WN2543",
+    "LGA",
+    "MDW",
+    "10:00 AM",
+    "12:00 PM",
+    "On time"
+
+)
+
+ops_agent = OpsAgent(
+
+    "e001",
+    "Cristian",
+    "Estrella",
+    "cristian@example.com",
     lga,
-    mdw,
-    "08:30 AM",
-    "10:15 AM",
-    "On Time"
+    "54"
+
 )
 
-# Pilots
-pilot1 = Pilot(
-    "E001",
-    "Carlos",
-    "Martinez",
-    "carlos@example.com",
-    mdw,
-    "PL-12345"
-)
+ramp_agent = RampAgent(
 
-pilot2 = Pilot(
-    "E002",
-    "Ana",
-    "Gomez",
-    "ana@example.com",
+    "e002",
+    "Nawel",
+    "Taveras",
+    "nawel@example.com",
     lga,
-    "PL-67890"
+    "30B"
+
 )
 
-# Flight attendants
-flight_attendant1 = FlightAttendant(
-    "E003",
-    "Maria",
-    "Lopez",
-    "maria@example.com",
-    lga,
-    "LGA"
-)
+flight_staff_assignment = FlightStaffAssignment(
 
-flight_attendant2 = FlightAttendant(
-    "E004",
-    "Jose",
-    "Ramirez",
-    "jose@example.com",
-    mdw,
-    "LGA"
-)
-
-# Crew assignment
-crew_assignment = FlightCrewAssignment(
-    "CA001",
+    "1234",
     flight
 )
 
-crew_assignment.add_pilot(pilot1)
-crew_assignment.add_pilot(pilot2)
+flight_staff_assignment.add_ramp_agent(ramp_agent)
+flight_staff_assignment.add_ops_agent(ops_agent)
 
-crew_assignment.add_flight_attendant(flight_attendant1)
-crew_assignment.add_flight_attendant(flight_attendant2)
-
-print("\n--- Flight Crew Assignment ---")
-crew_assignment.show_crew()
+flight_staff_assignment.show_staff()
