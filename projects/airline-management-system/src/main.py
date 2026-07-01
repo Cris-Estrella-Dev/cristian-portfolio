@@ -1,62 +1,94 @@
-from employees.employee import Employee
+from customers.customer import Customer
+from operations.booking import Booking
+from operations.reservation import Reservation
 from operations.flight import Flight
-from employees.ops_agent import OpsAgent
-from employees.ramp_agent import RampAgent
-from operations.flight_staff_assignment import FlightStaffAssignment
+from operations.baggage import Baggage
 from operations.airport import Airport
 
 
 
-lga = Airport(
+
+origin_airport = Airport(
 
     "LGA",
     "LaGuardia Airport",
-    "Queens, New York City",
-    "New York",
+    "Queens - NYC",
+    "NY",
     "USA"
 
 )
 
-flight = Flight(
+destination_aiport = Airport(
 
-    "WN2543",
-    "LGA",
     "MDW",
+    "Chicago Midway International Airport",
+    "Chicago",
+    "IL",
+    "USA"
+
+)
+
+
+flight  = Flight(
+
+    "WN476",
+    origin_airport,
+    destination_aiport,
     "10:00 AM",
-    "12:00 PM",
-    "On time"
+    "12:15 PM",
+    "On Time"
 
 )
 
-ops_agent = OpsAgent(
 
-    "e001",
-    "Cristian",
-    "Estrella",
-    "cristian@example.com",
-    lga,
-    "54"
+customer = Customer(
 
-)
 
-ramp_agent = RampAgent(
-
-    "e002",
-    "Nawel",
-    "Taveras",
-    "nawel@example.com",
-    lga,
-    "30B"
+    "C001",
+    "Jureissi",
+    "Tavarez",
+    "jureissi@example.com",
+    "809-702-3396"
 
 )
 
-flight_staff_assignment = FlightStaffAssignment(
 
-    "1234",
-    flight
+booking = Booking(
+
+    "B001",
+    "BCOO2",
+    customer,
+    "07/01/2026",
+    "Confirmed",
+    "250$"
+
 )
 
-flight_staff_assignment.add_ramp_agent(ramp_agent)
-flight_staff_assignment.add_ops_agent(ops_agent)
 
-flight_staff_assignment.show_staff()
+
+reservation = Reservation(
+
+    "R001",
+    flight,
+    "Confirmed",
+    "WNGA",
+    "4",
+    "Not checked-in"
+
+)
+
+baggage = Baggage(
+
+    "BG001",
+    "22R"
+
+
+)
+
+
+
+
+booking.add_reservation(reservation)
+
+
+booking.show_info()
