@@ -52,18 +52,52 @@ As the project evolves, additional technologies such as databases, REST APIs, Do
 
 ```text
 airline-management-system/
-
 ├── docs/
 │   ├── architecture/
+│   │   ├── .gitkeep
+│   │   ├── AirlineMS-v1.drawio
+│   │   └── FirstClassDiagramScreenshot.png
+│   │
 │   └── screenshots/
 │
 ├── src/
+│   ├── __init__.py
+│   ├── main.py
+│   │
+│   ├── customers/
+│   │   ├── __init__.py
+│   │   └── customer.py
+│   │
+│   ├── employees/
+│   │   ├── __init__.py
+│   │   ├── employee.py
+│   │   ├── customer_service_agent.py
+│   │   ├── flight_attendant.py
+│   │   ├── manager.py
+│   │   ├── ops_agent.py
+│   │   ├── pilot.py
+│   │   ├── ramp_agent.py
+│   │   └── supervisor.py
+│   │
+│   ├── operations/
+│   │   ├── __init__.py
+│   │   ├── airport.py
+│   │   ├── baggage.py
+│   │   ├── booking.py
+│   │   ├── flight.py
+│   │   ├── flight_crew_assignment.py
+│   │   ├── flight_staff_assignment.py
+│   │   └── reservation.py
+│   │
+│   └── services/
+│       ├── __init__.py
+│       └── booking_service.py
 │
 ├── tests/
 │
+├── .gitignore
 ├── README.md
-├── requirements.txt
-└── .gitignore
+└── requirements.txt
 ```
 
 ---
