@@ -181,3 +181,27 @@ Instead of writing code immediately, every major feature follows this workflow:
 7. Commit changes to Git.
 
 This journal reflects the engineering mindset used throughout the project.
+
+
+## Current Progress
+
+The first functional version of the Airline Management System has been implemented.
+
+The project now includes a complete object-oriented flow connecting the main business entities of an airline system:
+
+- Airports
+- Flights
+- Customers
+- Bookings
+- Reservations
+- Baggage
+- Employees
+- Flight crew assignments
+- Flight staff assignments
+- Booking service logic
+
+The system currently supports creating a customer booking through a service layer, adding a reservation to that booking, assigning baggage to the reservation, assigning pilots and flight attendants to a flight crew, and assigning operations and ramp agents to flight staff.
+
+This version demonstrates the core object-oriented relationships designed in the UML class diagram, including object references, lists of related objects, inheritance, abstraction, and service-layer coordination.
+
+Next steps include improving validation, adding JSON persistence, writing tests, and preparing the system for future API and database integration.
