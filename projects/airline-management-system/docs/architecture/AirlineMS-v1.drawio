@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Página-1" id="Yd_k3ixLG-N8cDqdVjmm">
-    <mxGraphModel dx="2764" dy="1104" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2211" dy="789" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -177,16 +177,16 @@
           <mxGeometry height="42" width="160" y="148" as="geometry" />
         </mxCell>
         <mxCell id="yZlibZmWf_SXdKEo_MEq-70" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Booking" vertex="1">
-          <mxGeometry height="170" width="180" x="530" y="1520" as="geometry" />
+          <mxGeometry height="190" width="180" x="530" y="1500" as="geometry" />
         </mxCell>
-        <mxCell id="yZlibZmWf_SXdKEo_MEq-71" parent="yZlibZmWf_SXdKEo_MEq-70" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="-booking_id: str&lt;div&gt;-confirmation_number: str&lt;/div&gt;&lt;div&gt;-booking_date: str&lt;/div&gt;&lt;div&gt;-status: str&lt;/div&gt;&lt;div&gt;-total_price: float&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="84" width="180" y="26" as="geometry" />
+        <mxCell id="yZlibZmWf_SXdKEo_MEq-71" parent="yZlibZmWf_SXdKEo_MEq-70" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="-booking_id: str&lt;div&gt;-confirmation_number: str&lt;/div&gt;&lt;div&gt;-customer: Customer&lt;/div&gt;&lt;div&gt;-booking_date: str&lt;/div&gt;&lt;div&gt;-status: str&lt;/div&gt;&lt;div&gt;-total_price: float&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="104" width="180" y="26" as="geometry" />
         </mxCell>
         <mxCell id="yZlibZmWf_SXdKEo_MEq-72" parent="yZlibZmWf_SXdKEo_MEq-70" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="180" y="110" as="geometry" />
+          <mxGeometry height="8" width="180" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="yZlibZmWf_SXdKEo_MEq-73" parent="yZlibZmWf_SXdKEo_MEq-70" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ add_flight_reservation(): str&lt;div&gt;+cancel_booking(): None&lt;br&gt;&lt;div&gt;+show_info(): None&lt;/div&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="52" width="180" y="118" as="geometry" />
+        <mxCell id="yZlibZmWf_SXdKEo_MEq-73" parent="yZlibZmWf_SXdKEo_MEq-70" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ add_reservation(): str&lt;div&gt;+cancel_booking(): None&lt;br&gt;&lt;div&gt;+show_info(): None&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="52" width="180" y="138" as="geometry" />
         </mxCell>
         <mxCell id="yZlibZmWf_SXdKEo_MEq-74" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;startArrow=open;startFill=0;" value="">
           <mxGeometry relative="1" as="geometry">
