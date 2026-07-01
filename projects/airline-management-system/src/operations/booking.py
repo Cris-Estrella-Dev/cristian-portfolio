@@ -33,18 +33,25 @@ class Booking:
         print("Booking has been cancelled succesfully")
 
     def show_info(self):
+        print("-------------Booking-------------\n")
+        print(f"Customer: {self.get_customer()}")
         print(f"Booking ID: {self.get_booking_id()}")
         print(f"Confirmation Number: {self.get_confirmation_number()}")
         print(f"Booking date: {self.get_booking_date()}")
         print(f"Status: {self.get_status()}")
         print(f"Total Price: {self.get_total_price()}")
-        print(f"Customer: {self.get_customer()}")
-        print("---------------------------------\n")
+        print("----------Reservation-------------\n")
         for reservation in self.__reservations:
             if not self.__reservations:
                 print("There are no reservations associated to this booking")
+                print("---------------------------------\n")
             else:
                 reservation.show_info()
+                print("---------------------------------\n")
+        
+        
+        
+        
     
     def get_status(self):
         return self.__status
