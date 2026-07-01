@@ -39,8 +39,8 @@ class Booking:
         print(f"Confirmation Number: {self.get_confirmation_number()}")
         print(f"Booking date: {self.get_booking_date()}")
         print(f"Status: {self.get_status()}")
-        print(f"Total Price: {self.get_total_price()}")
-        print("----------Reservation-------------\n")
+        print(f"Total Price: {self.get_total_price():.2f}")
+        print("-----------Reservation-------------\n")
         for reservation in self.__reservations:
             if not self.__reservations:
                 print("There are no reservations associated to this booking")

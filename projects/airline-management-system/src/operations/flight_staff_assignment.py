@@ -14,11 +14,11 @@ class FlightStaffAssignment:
 
     def add_ops_agent(self,ops_agent):
         self.__ops_agents.append(ops_agent)
-        print("Ops agent added succesfully!")
+        print("Ops agent added successfully!")
 
     def add_ramp_agent(self,ramp_agent):
         self.__ramp_agents.append(ramp_agent)
-        print("Ramp agent added succesfully!")
+        print("Ramp agent added successfully!")
 
     def show_staff(self):
         print(f"Assignment ID: {self.__assignment_id}")

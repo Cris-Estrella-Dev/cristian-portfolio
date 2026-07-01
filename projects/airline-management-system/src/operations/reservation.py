@@ -42,7 +42,7 @@ class Reservation:
         print("Bag not found.")
 
     def show_info(self):
-
+        print(f"Reservation ID: {self.__reservation_id}")
         print(f"Flight: {self.__flight}")
         print(f"Status: {self.__status}")
         print(f"Fare Type: {self.__fare_type}")

@@ -12,5 +12,5 @@ class RampAgent(Employee):
         print(f"Name: {self.get_full_name()}")
         print(f"Email: {self.get_email()}")
         print(f"Base Airport: {self.get_base_airport()}")
-        print(f"Rampo Zone: {self.__ramp_zone}")
+        print(f"Ramp Zone: {self.__ramp_zone}")
 

@@ -1,94 +1,80 @@
-from customers.customer import Customer
-from operations.booking import Booking
-from operations.reservation import Reservation
-from operations.flight import Flight
-from operations.baggage import Baggage
 from operations.airport import Airport
+from operations.flight import Flight
+from customers.customer import Customer
+from services.booking_service import BookingService
+from operations.reservation import Reservation
+from operations.baggage import Baggage
+
+from employees.flight_attendant import FlightAttendant
+from employees.ops_agent import OpsAgent
+from employees.pilot import Pilot
+from employees.ramp_agent import RampAgent
+
+from operations.flight_staff_assignment import FlightStaffAssignment
+from operations.flight_crew_assignment import FlightCrewAssignment
 
 
+# 1. Crear airports
+lga = Airport("LGA", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+bna = Airport("BNA", "Nashville International Airport", "Nashville", "TN", "USA")
 
+# 2. Crear flight
+flight = Flight("WN476", lga, bna, "10:00 AM", "1:15 PM", "On time")
 
-origin_airport = Airport(
+# 3. Crear customer
+customer = Customer("C001", "Nawel", "Tavares", "nawel@example.com", "809-702-3396")
 
-    "LGA",
-    "LaGuardia Airport",
-    "Queens - NYC",
-    "NY",
-    "USA"
+# 4. Crear booking usando BookingService
+booking_service = BookingService()
 
-)
+booking = booking_service.create_booking(customer, 230.00)
 
-destination_aiport = Airport(
-
-    "MDW",
-    "Chicago Midway International Airport",
-    "Chicago",
-    "IL",
-    "USA"
-
-)
-
-
-flight  = Flight(
-
-    "WN476",
-    origin_airport,
-    destination_aiport,
-    "10:00 AM",
-    "12:15 PM",
-    "On Time"
-
-)
-
-
-customer = Customer(
-
-
-    "C001",
-    "Jureissi",
-    "Tavarez",
-    "jureissi@example.com",
-    "809-702-3396"
-
-)
-
-
-booking = Booking(
-
-    "B001",
-    "BCOO2",
-    customer,
-    "07/01/2026",
-    "Confirmed",
-    "250$"
-
-)
-
-
-
+# 5. Crear reservation
 reservation = Reservation(
-
     "R001",
     flight,
     "Confirmed",
-    "WNGA",
+    "WN-PLU",
     "4",
-    "Not checked-in"
-
+    "Checked-in"
 )
 
-baggage = Baggage(
+# 6. Agregar baggage
+bag1 = Baggage("034", "Red hard shell bag")
+reservation.add_bag(bag1)
 
-    "BG001",
-    "22R"
+# 7. Agregar reservation al booking
+booking_service.add_reservation_to_booking(booking, reservation)
 
+# 8. Crear pilots y flight attendants
+pilot = Pilot("P001", "Edwin", "Estrella", "edwin@wnco.com", bna, "B334F")
+flight_attendant = FlightAttendant("F001", "Allie", "Richards", "allie@wnco.com", bna, "Nashville")
 
-)
+# 9. Crear flight crew assignment
+flight_crew_assignment = FlightCrewAssignment("023", flight)
 
+flight_crew_assignment.add_pilot(pilot)
+flight_crew_assignment.add_flight_attendant(flight_attendant)
 
+# 10. Crear ops agent y ramp agents
+ramp_agent = RampAgent("RA001", "Andre", "Taylor", "andre@wnco.com", lga, "Zone 25")
+ops_agent = OpsAgent("OPS001", "Courtney", "Wright", "courtney@wnco.com", lga, "Gate 57")
 
+# 11. Crear flight staff assignment
+flight_staff_assignment = FlightStaffAssignment("004", flight)
 
-booking.add_reservation(reservation)
+flight_staff_assignment.add_ops_agent(ops_agent)
+flight_staff_assignment.add_ramp_agent(ramp_agent)
 
-
+# 12. Mostrar toda la información
+print("\n========== BOOKING INFORMATION ==========")
 booking.show_info()
+
+print("\n========== RESERVATION INFORMATION ==========")
+reservation.show_info()
+
+print("\n========== FLIGHT CREW ASSIGNMENT ==========")
+flight_crew_assignment.show_crew()
+
+print("\n========== FLIGHT STAFF ASSIGNMENT ==========")
+flight_staff_assignment.show_staff()

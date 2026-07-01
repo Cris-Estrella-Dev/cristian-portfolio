@@ -8,7 +8,7 @@ class FlightAttendant(Employee):
 
     def show_info(self):
 
-        print("Role: Fligh Attendant")
+        print("Role: Flight Attendant")
         print(f"Employee ID: {self.get_employee_id()}")
         print(f"Name: {self.get_full_name()}")
         print(f"Email: {self.get_email()}")
