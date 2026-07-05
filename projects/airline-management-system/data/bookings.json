@@ -1,0 +1,51 @@
+[
+    {
+        "booking_id": "BKG-032121",
+        "confirmation_number": "1KXBF7",
+        "customer": {
+            "customer_id": "C001",
+            "first_name": "Nawel",
+            "last_name": "Tavares",
+            "email": "nawel@example.com",
+            "phone_number": "809-702-3396"
+        },
+        "booking_date": "2026-07-05",
+        "status": "Active",
+        "total_price": 230.0,
+        "reservations": [
+            {
+                "reservation_id": "R001",
+                "flight": {
+                    "flight_number": "WN476",
+                    "origin_airport": {
+                        "airport_code": "LGA",
+                        "name": "LaGuardia Airport",
+                        "city": "Queens - NYC",
+                        "state": "NY",
+                        "country": "USA"
+                    },
+                    "destination_airport": {
+                        "airport_code": "BNA",
+                        "name": "Nashville International Airport",
+                        "city": "Nashville",
+                        "state": "TN",
+                        "country": "USA"
+                    },
+                    "departure_time": "10:00 AM",
+                    "arrival_time": "1:15 PM",
+                    "status": "On time"
+                },
+                "status": "Confirmed",
+                "fare_type": "WN-PLU",
+                "boarding_position": "4",
+                "check_in_status": "Checked-in",
+                "bags": [
+                    {
+                        "bag_id": "034",
+                        "bag_type": "Red hard shell bag"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -15,3 +15,16 @@ class Baggage:
 
     def __str__(self):
         return f"{self.get_bag_id()} - {self.get_bag_type()}"
+    
+    def to_dict(self):
+        return{
+            "bag_id": self.__bag_id,
+            "bag_type": self.__bag_type
+        }
+    
+    @staticmethod
+    def from_dict(data):
+        return Baggage(
+            data["bag_id"],
+            data["bag_type"]
+        )

@@ -4,6 +4,7 @@ from customers.customer import Customer
 from services.booking_service import BookingService
 from operations.reservation import Reservation
 from operations.baggage import Baggage
+from operations.booking import Booking
 
 from employees.flight_attendant import FlightAttendant
 from employees.ops_agent import OpsAgent
@@ -12,6 +13,9 @@ from employees.ramp_agent import RampAgent
 
 from operations.flight_staff_assignment import FlightStaffAssignment
 from operations.flight_crew_assignment import FlightCrewAssignment
+
+from services.booking_storage_service import BookingStorageService
+
 
 
 # 1. Crear airports
@@ -78,3 +82,29 @@ flight_crew_assignment.show_crew()
 
 print("\n========== FLIGHT STAFF ASSIGNMENT ==========")
 flight_staff_assignment.show_staff()
+
+
+print("\n========== TESTING TO_DICT ==========")
+booking_dict = booking.to_dict()
+print(booking_dict)
+
+print("\n========== TESTING FROM_DICT ==========")
+reconstructed_booking = Booking.from_dict(booking_dict)
+reconstructed_booking.show_info()
+
+
+storage_service = BookingStorageService()
+
+print("\n========== BOOKING BEFORE SAVING ==========")
+print(booking.to_dict())
+
+storage_service.save_bookings([booking])
+
+loaded_bookings = storage_service.load_bookings()
+
+print("\n========== BOOKINGS LOADED FROM JSON ==========")
+print(f"Collection type: {type(loaded_bookings)}")
+
+for loaded_booking in loaded_bookings:
+    print(f"Element type: {type(loaded_booking)}")
+    loaded_booking.show_info()

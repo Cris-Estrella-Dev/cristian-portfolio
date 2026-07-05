@@ -1,3 +1,6 @@
+from operations.flight import Flight
+from operations.baggage import Baggage
+
 class Reservation:
     def __init__(self, reservation_id, flight, status, fare_type, boarding_position, check_in_status):
         self.__reservation_id = reservation_id
@@ -56,3 +59,37 @@ class Reservation:
             for bag in self.__bags:
                 print(f"{bag}")
                 
+    def to_dict(self):
+
+        return{
+            "reservation_id": self.__reservation_id,
+            "flight": self.__flight.to_dict(),
+            "status": self.__status,
+            "fare_type": self.__fare_type,
+            "boarding_position": self.__boarding_position,
+            "check_in_status": self.__check_in_status,
+            "bags": [bag.to_dict() for bag in self.__bags]
+        }
+    
+    @staticmethod
+    def from_dict(data):
+        flight = Flight.from_dict(data["flight"])
+
+        bags = [
+            Baggage.from_dict(bag_data)
+            for bag_data in data["bags"]
+        ]
+
+        reservation = Reservation(
+            data["reservation_id"],
+            flight,
+            data["status"],
+            data["fare_type"],
+            data["boarding_position"],
+            data["check_in_status"]
+        )
+
+        for bag in bags:
+            reservation.add_bag(bag)
+
+        return reservation

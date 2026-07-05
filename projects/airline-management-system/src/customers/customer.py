@@ -27,4 +27,24 @@ class Customer:
     def __str__(self):
         return f"{self.__customer_id} - {self.get_full_name()}"
     
+    def to_dict(self):
+        return {
+        "customer_id": self.__customer_id,
+        "first_name": self.__first_name,
+        "last_name": self.__last_name,
+        "email": self.__email,
+        "phone_number": self.__phone_number
+    }
+
+    @staticmethod
+    def from_dict(data):
+        return Customer(
+            data["customer_id"],
+            data["first_name"],
+            data["last_name"],
+            data["email"],
+            data["phone_number"]
+        )
+
+    
     

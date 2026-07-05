@@ -1,3 +1,5 @@
+from operations.airport import Airport
+
 class Flight:
     def __init__(self, flight_number, origin_airport, destination_airport, departure_time, arrival_time, status):
         self.__flight_number = flight_number
@@ -29,3 +31,29 @@ class Flight:
 
     def __str__(self):
         return f"{self.__flight_number} | {self.__origin_airport} -> {self.__destination_airport}"
+    
+
+    def to_dict(self):
+
+        return{
+            "flight_number": self.__flight_number,
+            "origin_airport": self.__origin_airport.to_dict(),
+            "destination_airport": self.__destination_airport.to_dict(),
+            "departure_time": self.__departure_time,
+            "arrival_time": self.__arrival_time,
+            "status": self.__status
+        }
+    
+
+    def from_dict(data):
+        origin_airport = Airport.from_dict(data["origin_airport"])
+        destination_airport = Airport.from_dict(data["destination_airport"])
+        return Flight(
+            data["flight_number"],
+            origin_airport,
+            destination_airport,
+            data["departure_time"],
+            data["arrival_time"],
+            data["status"]
+        )
+        

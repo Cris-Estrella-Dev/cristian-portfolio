@@ -21,3 +21,22 @@ class Airport:
 
     def __str__(self):
         return f"{self.__airport_code} - {self.__name}"
+    
+    def to_dict(self):
+        return{
+            "airport_code": self.__airport_code,
+            "name": self.__name,
+            "city": self.__city,
+            "state": self.__state,
+            "country": self.__country
+        }
+    
+    @staticmethod
+    def from_dict(data):
+        return Airport(
+            data["airport_code"],
+            data["name"],
+            data["city"],
+            data["state"],
+            data["country"]
+        )
