@@ -17,6 +17,14 @@ class Flight:
 
     def get_destination_airport(self):
         return self.__destination_airport
+    
+    def get_departure_time(self):
+        return self.__departure_time
+
+    def get_arrival_time(self):
+        return self.__arrival_time
+    
+   
 
     def get_status(self):
         return self.__status

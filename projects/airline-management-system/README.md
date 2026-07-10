@@ -239,3 +239,8 @@ The system currently supports creating a customer booking through a service laye
 This version demonstrates the core object-oriented relationships designed in the UML class diagram, including object references, lists of related objects, inheritance, abstraction, and service-layer coordination.
 
 Next steps include improving validation, adding JSON persistence, writing tests, and preparing the system for future API and database integration.
+
+## Ideas
+
+- Think about something that could be better within CM. For example, something that takes 15 steps, how can cut it down to 3 or 4 steps...
+- Include something that I haven't used yet/something that CM doesn't have yet

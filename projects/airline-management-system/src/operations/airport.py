@@ -11,6 +11,15 @@ class Airport:
 
     def get_name(self):
         return self.__name
+    
+    def get_city(self):
+        return self.__city
+    
+    def get_state(self):
+        return self.__state
+
+    def get_country(self):
+        return self.__country
 
     def show_info(self):
         print(f"Airport Code: {self.__airport_code}")
