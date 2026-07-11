@@ -25,24 +25,23 @@ class Reservation:
 
     def check_in(self):
         self.__check_in_status = "Checked In"
-        print("Customer checked in successfully.")
+
 
     def cancel(self):
         self.__status = "Cancelled"
-        print("Flight reservation cancelled successfully.")
+
 
     def add_bag(self, bag):
         self.__bags.append(bag)
-        print("Bag added successfully.")
+       
 
     def delete_bag(self, bag_id):
         for bag in self.__bags:
             if bag.get_bag_id() == bag_id:
                 self.__bags.remove(bag)
-                print("Bag deleted successfully.")
-                return
+                return True
 
-        print("Bag not found.")
+        
 
     def show_info(self):
         print(f"Reservation ID: {self.__reservation_id}")

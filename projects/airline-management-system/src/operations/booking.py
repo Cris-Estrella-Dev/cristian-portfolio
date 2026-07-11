@@ -30,13 +30,13 @@ class Booking:
     
     def add_reservation(self,reservation):
         self.__reservations.append(reservation)
-        print("Reservation has been added succesfully")
+  
 
     def cancel_booking(self):
         self.__status = "Cancelled"
         for reservation in self.__reservations:
             reservation.cancel()
-        print("Booking has been cancelled succesfully")
+
 
     def show_info(self):
         print("-------------Booking-------------\n")

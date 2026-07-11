@@ -14,7 +14,6 @@ class BookingStorageService:
         with open(self.__file_path, "w") as file:
             json.dump(bookings_data, file, indent=4)
 
-        print("Bookings saved successfully.")
 
     def load_bookings(self):
         if not os.path.exists(self.__file_path):

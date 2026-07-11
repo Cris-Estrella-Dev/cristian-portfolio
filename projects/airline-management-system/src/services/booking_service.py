@@ -23,7 +23,7 @@ class BookingService:
 
     def add_reservation_to_booking(self, booking, reservation):
         booking.add_reservation(reservation)
-        print("Reservation added to booking successfully.")
+  
 
     def cancel_booking(self, booking):
         booking.cancel_booking()
