@@ -25,6 +25,9 @@ class Booking:
     def get_customer(self):
         return self.__customer
     
+    def get_reservations(self):
+        return self.__reservations
+    
     def add_reservation(self,reservation):
         self.__reservations.append(reservation)
         print("Reservation has been added succesfully")
