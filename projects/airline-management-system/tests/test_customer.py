@@ -1,5 +1,5 @@
 from src.customers.customer import Customer
-
+import pytest
 
 
 def test_customer_to_dict():
@@ -66,5 +66,30 @@ def test_customer_serialization_round_trip():
 
 
 
+def test_customer_id_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Customer("", "Nawel", "Tavares", "nawel@example.com", "809-702-3396")
 
 
+def test_customer_id_cannot_be_only_spaces():
+    with pytest.raises(ValueError):
+        Customer("   ", "Nawel", "Tavares", "nawel@example.com", "809-702-3396")
+
+
+def test_customer_name_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Customer("C001","", "Tavares", "nawel@example.com", "809-702-3396")
+
+
+def test_customer_last_name_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Customer("C001","Nawel", "", "nawel@example.com", "809-702-3396")
+
+def test_customer_email_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Customer("C001","Nawel", "Tavares", "", "809-702-3396")
+
+
+def test_customer_phone_number_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Customer("C001","Nawel", "Tavares", "nawel@example.com", "")

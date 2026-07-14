@@ -1,4 +1,5 @@
 from src.operations.airport import Airport
+import pytest
 
 def test_airport_to_dict():
 
@@ -80,3 +81,29 @@ def test_airport_from_dict():
     assert destination_airport.get_city() == 'Nashville'
     assert destination_airport.get_state() == 'TN'
     assert destination_airport.get_country() == 'USA'
+
+
+
+def test_airport_code_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Airport("", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+
+
+def test_airport_code_cannot_be_only_spaces():
+    with pytest.raises(ValueError):
+        Airport("   ", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+
+
+def test_airport_code_must_have_three_characters():
+    with pytest.raises(ValueError):
+        Airport("LG", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+
+
+def test_airport_name_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Airport("LGA", "", "Queens - NYC", "NY", "USA")
+
+
+def test_airport_city_cannot_be_empty():
+    with pytest.raises(ValueError):
+        Airport("LGA", "LaGuardia Airport", "", "NY", "USA")

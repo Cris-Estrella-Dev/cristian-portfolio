@@ -1,10 +1,29 @@
 class Airport:
     def __init__(self, airport_code, name, city, state, country):
-        self.__airport_code = airport_code
-        self.__name = name
-        self.__city = city
-        self.__state = state
-        self.__country = country
+        if not airport_code or not airport_code.strip():
+            raise ValueError("Airport code cannot be empty.")
+
+        if len(airport_code.strip()) != 3:
+            raise ValueError("Airport code must have exactly 3 characters.")
+
+        if not name or not name.strip():
+            raise ValueError("Airport name cannot be empty.")
+
+        if not city or not city.strip():
+            raise ValueError("Airport city cannot be empty.")
+
+        if not state or not state.strip():
+            raise ValueError("Airport state cannot be empty.")
+
+        if not country or not country.strip():
+            raise ValueError("Airport country cannot be empty.")
+
+        self.__airport_code = airport_code.strip().upper()
+        self.__name = name.strip()
+        self.__city = city.strip()
+        self.__state = state.strip()
+        self.__country = country.strip()
+    
 
     def get_airport_code(self):
         return self.__airport_code

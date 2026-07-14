@@ -4,6 +4,9 @@ from operations.reservation import Reservation
 class Booking:
 
     def __init__(self,booking_id, confirmation_number,customer,booking_date,status,total_price):
+
+
+
         self.__booking_id = booking_id
         self.__confirmation_number = confirmation_number
         self.__booking_date = booking_date

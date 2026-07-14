@@ -1,7 +1,16 @@
 class Baggage:
     def __init__(self,bag_id, bag_type):
-        self.__bag_id = bag_id
-        self.__bag_type = bag_type
+
+        if not bag_id or not bag_id.strip():
+            raise ValueError("Bag id cannot be empty.")
+        
+        if not bag_type or not bag_type.strip():
+            raise ValueError("Bag type cannot be empty.")
+
+
+
+        self.__bag_id = bag_id.strip()
+        self.__bag_type = bag_type.strip()
     
     def get_bag_id(self):
         return self.__bag_id

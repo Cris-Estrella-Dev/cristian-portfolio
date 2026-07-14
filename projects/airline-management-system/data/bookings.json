@@ -1,7 +1,7 @@
 [
     {
-        "booking_id": "BKG-812523",
-        "confirmation_number": "DRSSOW",
+        "booking_id": "BKG-683533",
+        "confirmation_number": "E3MYYY",
         "customer": {
             "customer_id": "C001",
             "first_name": "Nawel",
@@ -9,7 +9,7 @@
             "email": "nawel@example.com",
             "phone_number": "809-702-3396"
         },
-        "booking_date": "2026-07-07",
+        "booking_date": "2026-07-13",
         "status": "Active",
         "total_price": 230.0,
         "reservations": [
