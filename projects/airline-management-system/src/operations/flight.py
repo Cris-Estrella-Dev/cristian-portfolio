@@ -2,12 +2,34 @@ from operations.airport import Airport
 
 class Flight:
     def __init__(self, flight_number, origin_airport, destination_airport, departure_time, arrival_time, status):
-        self.__flight_number = flight_number
+
+        if not flight_number or not flight_number.strip():
+            raise ValueError("Flight number cannot be empty.")
+
+        if not isinstance(origin_airport, Airport):
+            raise ValueError("Origin airport must be an Airport object.")
+
+        if not isinstance(destination_airport, Airport):
+            raise ValueError("Destination airport must be an Airport object.")
+
+        if origin_airport.get_airport_code() == destination_airport.get_airport_code():
+            raise ValueError("Origin airport and destination airport cannot be the same.")
+
+        if not departure_time or not departure_time.strip():
+            raise ValueError("Departure time cannot be empty.")
+
+        if not arrival_time or not arrival_time.strip():
+            raise ValueError("Arrival time cannot be empty.")
+
+        if not status or not status.strip():
+            raise ValueError("Flight status cannot be empty.")
+
+        self.__flight_number = flight_number.strip().upper()
         self.__origin_airport = origin_airport
         self.__destination_airport = destination_airport
-        self.__departure_time = departure_time
-        self.__arrival_time = arrival_time
-        self.__status = status
+        self.__departure_time = departure_time.strip()
+        self.__arrival_time = arrival_time.strip()
+        self.__status = status.strip()
 
     def get_flight_number(self):
         return self.__flight_number

@@ -1,5 +1,6 @@
 from operations.flight import Flight
 from operations.airport import Airport
+import pytest
 
 def test_to_dict_includes_nested_airports():
 
@@ -120,3 +121,58 @@ def test_flight_serialization_round_trip():
 
     # Assert
     assert reconstructed_flight.to_dict() == original_flight.to_dict()
+
+
+
+
+def test_flight_number_cannot_be_empty():
+    lga = Airport("LGA", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+    bna = Airport("BNA", "Nashville International Airport", "Nashville", "TN", "USA")
+
+    with pytest.raises(ValueError):
+        Flight("", lga, bna, "10:00 AM", "1:15 PM", "On time")
+
+
+def test_flight_origin_airport_must_be_airport_object():
+    bna = Airport("BNA", "Nashville International Airport", "Nashville", "TN", "USA")
+
+    with pytest.raises(ValueError):
+        Flight("WN476", "LGA", bna, "10:00 AM", "1:15 PM", "On time")
+
+
+def test_flight_destination_airport_must_be_airport_object():
+    lga = Airport("LGA", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+
+    with pytest.raises(ValueError):
+        Flight("WN476", lga, "BNA", "10:00 AM", "1:15 PM", "On time")
+
+
+def test_flight_origin_and_destination_cannot_be_the_same_airport():
+    lga = Airport("LGA", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+
+    with pytest.raises(ValueError):
+        Flight("WN476", lga, lga, "10:00 AM", "1:15 PM", "On time")
+
+
+def test_flight_departure_time_cannot_be_empty():
+    lga = Airport("LGA", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+    bna = Airport("BNA", "Nashville International Airport", "Nashville", "TN", "USA")
+
+    with pytest.raises(ValueError):
+        Flight("WN476", lga, bna, "", "1:15 PM", "On time")
+
+
+def test_flight_arrival_time_cannot_be_empty():
+    lga = Airport("LGA", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+    bna = Airport("BNA", "Nashville International Airport", "Nashville", "TN", "USA")
+
+    with pytest.raises(ValueError):
+        Flight("WN476", lga, bna, "10:00 AM", "", "On time")
+
+
+def test_flight_status_cannot_be_empty():
+    lga = Airport("LGA", "LaGuardia Airport", "Queens - NYC", "NY", "USA")
+    bna = Airport("BNA", "Nashville International Airport", "Nashville", "TN", "USA")
+
+    with pytest.raises(ValueError):
+        Flight("WN476", lga, bna, "10:00 AM", "1:15 PM", "")
