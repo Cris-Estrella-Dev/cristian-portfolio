@@ -1,7 +1,159 @@
+import pytest
+
 from operations.airport import Airport
 from operations.flight import Flight
 from operations.baggage import Baggage
 from operations.reservation import Reservation
+
+
+
+
+def create_sample_flight():
+    lga = Airport(
+        "LGA",
+        "LaGuardia Airport",
+        "Queens - NYC",
+        "NY",
+        "USA"
+    )
+
+    bna = Airport(
+        "BNA",
+        "Nashville International Airport",
+        "Nashville",
+        "TN",
+        "USA"
+    )
+
+    return Flight(
+        "WN476",
+        lga,
+        bna,
+        "10:00 AM",
+        "1:15 PM",
+        "On time"
+    )
+
+
+def test_reservation_id_cannot_be_empty():
+    flight = create_sample_flight()
+
+    with pytest.raises(ValueError):
+        Reservation(
+            "",
+            flight,
+            "Confirmed",
+            "WN-PLU",
+            "4",
+            "Checked-in"
+        )
+
+
+def test_reservation_flight_must_be_flight_object():
+    with pytest.raises(ValueError):
+        Reservation(
+            "R001",
+            "WN476",
+            "Confirmed",
+            "WN-PLU",
+            "4",
+            "Checked-in"
+        )
+
+
+def test_reservation_status_cannot_be_empty():
+    flight = create_sample_flight()
+
+    with pytest.raises(ValueError):
+        Reservation(
+            "R001",
+            flight,
+            "",
+            "WN-PLU",
+            "4",
+            "Checked-in"
+        )
+
+
+def test_reservation_fare_type_cannot_be_empty():
+    flight = create_sample_flight()
+
+    with pytest.raises(ValueError):
+        Reservation(
+            "R001",
+            flight,
+            "Confirmed",
+            "",
+            "4",
+            "Checked-in"
+        )
+
+
+def test_reservation_boarding_position_cannot_be_empty():
+    flight = create_sample_flight()
+
+    with pytest.raises(ValueError):
+        Reservation(
+            "R001",
+            flight,
+            "Confirmed",
+            "WN-PLU",
+            "",
+            "Checked-in"
+        )
+
+
+def test_reservation_check_in_status_cannot_be_empty():
+    flight = create_sample_flight()
+
+    with pytest.raises(ValueError):
+        Reservation(
+            "R001",
+            flight,
+            "Confirmed",
+            "WN-PLU",
+            "4",
+            ""
+        )
+
+def test_add_bag_must_receive_baggage_object():
+    flight = create_sample_flight()
+
+    reservation = Reservation(
+        "R001",
+        flight,
+        "Confirmed",
+        "WN-PLU",
+        "4",
+        "Checked-in"
+    )
+
+    with pytest.raises(ValueError):
+        reservation.add_bag("034")
+
+
+def test_reservation_cannot_add_duplicate_bag():
+    flight = create_sample_flight()
+
+    reservation = Reservation(
+        "R001",
+        flight,
+        "Confirmed",
+        "WN-PLU",
+        "4",
+        "Checked-in"
+    )
+
+    bag = Baggage(
+        "034",
+        "Red hard shell bag"
+    )
+
+    reservation.add_bag(bag)
+
+    with pytest.raises(ValueError):
+        reservation.add_bag(bag)
+
 
 
 def test_reservation_to_dict_includes_nested_flight_and_bags():

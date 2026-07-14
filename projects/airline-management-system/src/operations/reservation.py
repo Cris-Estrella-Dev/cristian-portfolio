@@ -3,12 +3,31 @@ from operations.baggage import Baggage
 
 class Reservation:
     def __init__(self, reservation_id, flight, status, fare_type, boarding_position, check_in_status):
-        self.__reservation_id = reservation_id
+
+        if not reservation_id or not reservation_id.strip():
+            raise ValueError("Reservation ID cannot be empty.")
+
+        if not isinstance(flight, Flight):
+            raise ValueError("Flight must be a Flight object.")
+
+        if not status or not status.strip():
+            raise ValueError("Reservation status cannot be empty.")
+
+        if not fare_type or not fare_type.strip():
+            raise ValueError("Fare type cannot be empty.")
+
+        if not boarding_position or not boarding_position.strip():
+            raise ValueError("Boarding position cannot be empty.")
+
+        if not check_in_status or not check_in_status.strip():
+            raise ValueError("Check-in status cannot be empty.")
+
+        self.__reservation_id = reservation_id.strip()
         self.__flight = flight
-        self.__status = status
-        self.__fare_type = fare_type
-        self.__boarding_position = boarding_position
-        self.__check_in_status = check_in_status
+        self.__status = status.strip()
+        self.__fare_type = fare_type.strip()
+        self.__boarding_position = boarding_position.strip()
+        self.__check_in_status = check_in_status.strip()
         self.__bags = []
 
     def get_flight_reservation_id(self):
@@ -32,6 +51,13 @@ class Reservation:
 
 
     def add_bag(self, bag):
+        if not isinstance(bag, Baggage):
+            raise ValueError("Bag must be a Baggage object.")
+
+        for existing_bag in self.__bags:
+            if existing_bag.get_bag_id() == bag.get_bag_id():
+                raise ValueError("Bag already exists in this reservation.")
+
         self.__bags.append(bag)
        
 
