@@ -1,9 +1,164 @@
+import pytest
+
 from customers.customer import Customer
 from operations.airport import Airport
 from operations.flight import Flight
 from operations.baggage import Baggage
 from operations.reservation import Reservation
 from operations.booking import Booking
+
+
+
+def create_sample_customer():
+    return Customer(
+        "C001",
+        "Nawel",
+        "Tavares",
+        "nawel@example.com",
+        "809-702-3396"
+    )
+
+
+def create_sample_reservation():
+    lga = Airport(
+        "LGA",
+        "LaGuardia Airport",
+        "Queens - NYC",
+        "NY",
+        "USA"
+    )
+
+    bna = Airport(
+        "BNA",
+        "Nashville International Airport",
+        "Nashville",
+        "TN",
+        "USA"
+    )
+
+    flight = Flight(
+        "WN476",
+        lga,
+        bna,
+        "10:00 AM",
+        "1:15 PM",
+        "On time"
+    )
+
+    bag = Baggage(
+        "034",
+        "Red hard shell bag"
+    )
+
+    reservation = Reservation(
+        "R001",
+        flight,
+        "Confirmed",
+        "WN-PLU",
+        "4",
+        "Checked-in"
+    )
+
+    reservation.add_bag(bag)
+
+    return reservation
+
+
+
+def test_booking_id_cannot_be_empty():
+    customer = create_sample_customer()
+
+    with pytest.raises(ValueError):
+        Booking(
+            "",
+            "ABC123",
+            customer,
+            "2026-07-05",
+            "Active",
+            230.00
+        )
+
+
+def test_booking_confirmation_number_cannot_be_empty():
+    customer = create_sample_customer()
+
+    with pytest.raises(ValueError):
+        Booking(
+            "BKG-123456",
+            "",
+            customer,
+            "2026-07-05",
+            "Active",
+            230.00
+        )
+
+
+def test_booking_customer_must_be_customer_object():
+    with pytest.raises(ValueError):
+        Booking(
+            "BKG-123456",
+            "ABC123",
+            "C001",
+            "2026-07-05",
+            "Active",
+            230.00
+        )
+
+
+def test_booking_date_cannot_be_empty():
+    customer = create_sample_customer()
+
+    with pytest.raises(ValueError):
+        Booking(
+            "BKG-123456",
+            "ABC123",
+            customer,
+            "",
+            "Active",
+            230.00
+        )
+
+
+def test_booking_status_cannot_be_empty():
+    customer = create_sample_customer()
+
+    with pytest.raises(ValueError):
+        Booking(
+            "BKG-123456",
+            "ABC123",
+            customer,
+            "2026-07-05",
+            "",
+            230.00
+        )
+
+
+def test_booking_total_price_must_be_number():
+    customer = create_sample_customer()
+
+    with pytest.raises(ValueError):
+        Booking(
+            "BKG-123456",
+            "ABC123",
+            customer,
+            "2026-07-05",
+            "Active",
+            "230"
+        )
+
+
+def test_booking_total_price_cannot_be_negative():
+    customer = create_sample_customer()
+
+    with pytest.raises(ValueError):
+        Booking(
+            "BKG-123456",
+            "ABC123",
+            customer,
+            "2026-07-05",
+            "Active",
+            -230.00
+        )
 
 
 def test_booking_to_dict_includes_nested_customer_and_reservations():
@@ -223,3 +378,38 @@ def test_booking_serialization_round_trip():
 
     # Assert
     assert reconstructed_booking.to_dict() == original_booking.to_dict()
+
+
+def test_add_reservation_must_receive_reservation_object():
+    customer = create_sample_customer()
+
+    booking = Booking(
+        "BKG-123456",
+        "ABC123",
+        customer,
+        "2026-07-05",
+        "Active",
+        230.00
+    )
+
+    with pytest.raises(ValueError):
+        booking.add_reservation("R001")
+
+
+def test_booking_cannot_add_duplicate_reservation():
+    customer = create_sample_customer()
+    reservation = create_sample_reservation()
+
+    booking = Booking(
+        "BKG-123456",
+        "ABC123",
+        customer,
+        "2026-07-05",
+        "Active",
+        230.00
+    )
+
+    booking.add_reservation(reservation)
+
+    with pytest.raises(ValueError):
+        booking.add_reservation(reservation)

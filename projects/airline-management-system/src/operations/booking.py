@@ -3,15 +3,33 @@ from operations.reservation import Reservation
 
 class Booking:
 
-    def __init__(self,booking_id, confirmation_number,customer,booking_date,status,total_price):
+    def __init__(self, booking_id, confirmation_number, customer, booking_date, status, total_price):
+        if not booking_id or not booking_id.strip():
+            raise ValueError("Booking ID cannot be empty.")
 
+        if not confirmation_number or not confirmation_number.strip():
+            raise ValueError("Confirmation number cannot be empty.")
 
+        if not isinstance(customer, Customer):
+            raise ValueError("Customer must be a Customer object.")
 
-        self.__booking_id = booking_id
-        self.__confirmation_number = confirmation_number
-        self.__booking_date = booking_date
-        self.__status = status
-        self.__total_price = total_price
+        if not booking_date or not booking_date.strip():
+            raise ValueError("Booking date cannot be empty.")
+
+        if not status or not status.strip():
+            raise ValueError("Booking status cannot be empty.")
+
+        if not isinstance(total_price, (int, float)):
+            raise ValueError("Total price must be a number.")
+
+        if total_price < 0:
+            raise ValueError("Total price cannot be negative.")
+
+        self.__booking_id = booking_id.strip()
+        self.__confirmation_number = confirmation_number.strip().upper()
+        self.__booking_date = booking_date.strip()
+        self.__status = status.strip()
+        self.__total_price = float(total_price)
         self.__customer = customer
         self.__reservations = []
 
@@ -31,9 +49,16 @@ class Booking:
     def get_reservations(self):
         return self.__reservations
     
-    def add_reservation(self,reservation):
+    def add_reservation(self, reservation):
+        if not isinstance(reservation, Reservation):
+            raise ValueError("Reservation must be a Reservation object.")
+
+        for existing_reservation in self.__reservations:
+            if existing_reservation.get_flight_reservation_id() == reservation.get_flight_reservation_id():
+                raise ValueError("Reservation already exists in this booking.")
+
         self.__reservations.append(reservation)
-  
+    
 
     def cancel_booking(self):
         self.__status = "Cancelled"
