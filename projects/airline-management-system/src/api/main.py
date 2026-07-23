@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from services.booking_storage_service import BookingStorageService
 
 app = FastAPI(
@@ -25,3 +25,17 @@ def list_bookings():
     bookings = storage_service.load_bookings()
     return [booking.to_dict() for booking in bookings]
 
+
+
+@app.get("/bookings/{confirmation_number}")
+def get_booking_by_confirmation_number(confirmation_number):
+    storage_service = BookingStorageService
+    bookings = storage_service.load_bookings
+
+    for booking in bookings:
+        if booking.get_confirmation_number() == confirmation_number.upper():
+            return booking.to_dict()
+
+    raise HTTPException(status_code=404,
+        detail="Booking not found."
+    )

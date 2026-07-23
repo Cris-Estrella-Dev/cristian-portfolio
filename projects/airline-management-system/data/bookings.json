@@ -1,7 +1,7 @@
 [
     {
-        "booking_id": "BKG-683533",
-        "confirmation_number": "E3MYYY",
+        "booking_id": "BKG-703184",
+        "confirmation_number": "T9Q1BI",
         "customer": {
             "customer_id": "C001",
             "first_name": "Nawel",
@@ -9,7 +9,7 @@
             "email": "nawel@example.com",
             "phone_number": "809-702-3396"
         },
-        "booking_date": "2026-07-13",
+        "booking_date": "2026-07-22",
         "status": "Active",
         "total_price": 230.0,
         "reservations": [
@@ -43,8 +43,56 @@
                     {
                         "bag_id": "034",
                         "bag_type": "Red hard shell bag"
+                    },
+                    {
+                        "bag_id": "123",
+                        "bag_type": "blue soft shell bag"
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "booking_id": "BKG-164687",
+        "confirmation_number": "PAP8DJ",
+        "customer": {
+            "customer_id": "C002",
+            "first_name": "Cristian",
+            "last_name": "Estrella",
+            "email": "cristian@example.com",
+            "phone_number": "225-459-5665"
+        },
+        "booking_date": "2026-07-22",
+        "status": "Active",
+        "total_price": 500.0,
+        "reservations": [
+            {
+                "reservation_id": "R002",
+                "flight": {
+                    "flight_number": "WN476",
+                    "origin_airport": {
+                        "airport_code": "LGA",
+                        "name": "LaGuardia Airport",
+                        "city": "Queens - NYC",
+                        "state": "NY",
+                        "country": "USA"
+                    },
+                    "destination_airport": {
+                        "airport_code": "BNA",
+                        "name": "Nashville International Airport",
+                        "city": "Nashville",
+                        "state": "TN",
+                        "country": "USA"
+                    },
+                    "departure_time": "10:00 AM",
+                    "arrival_time": "1:15 PM",
+                    "status": "On time"
+                },
+                "status": "Confirmed",
+                "fare_type": "WN-WGA",
+                "boarding_position": "8",
+                "check_in_status": "Checked-in",
+                "bags": []
             }
         ]
     }

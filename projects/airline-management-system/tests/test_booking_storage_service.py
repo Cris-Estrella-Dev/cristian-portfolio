@@ -117,3 +117,14 @@ def test_load_bookings_returns_empty_list_when_file_does_not_exist(tmp_path):
 
     # Assert
     assert loaded_bookings == []
+
+
+def test_load_bookings_returns_empty_list_when_file_is_empty(tmp_path):
+    file_path = tmp_path / "bookings.json"
+    file_path.write_text("")
+
+    storage_service = BookingStorageService(file_path)
+
+    bookings = storage_service.load_bookings()
+
+    assert bookings == []

@@ -20,9 +20,13 @@ class BookingStorageService:
             return []
 
         with open(self.__file_path, "r") as file:
-            bookings_data = json.load(file)
+            file_content = file.read()
+
+        if not file_content.strip():
+            return []
+
+        bookings_data = json.loads(file_content)
 
         return [Booking.from_dict(booking_data) for booking_data in bookings_data]
-    
 
             

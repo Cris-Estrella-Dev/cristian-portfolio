@@ -28,10 +28,13 @@ flight = Flight("WN476", lga, bna, "10:00 AM", "1:15 PM", "On time")
 # 3. Crear customer
 customer = Customer("C001", "Nawel", "Tavares", "nawel@example.com", "809-702-3396")
 
+customer2 = Customer("C002", "Cristian", "Estrella", "cristian@example.com", "225-459-5665")
+
 # 4. Crear booking usando BookingService
 booking_service = BookingService()
 
 booking = booking_service.create_booking(customer, 230.00)
+booking2 = booking_service.create_booking(customer2,500)
 
 # 5. Crear reservation
 reservation = Reservation(
@@ -43,12 +46,26 @@ reservation = Reservation(
     "Checked-in"
 )
 
+reservation2 = Reservation(
+    "R002",
+    flight,
+    "Confirmed",
+    "WN-WGA",
+    "8",
+    "Checked-in"
+)
+
+
+
 # 6. Agregar baggage
 bag1 = Baggage("034", "Red hard shell bag")
+bag2 = Baggage("123", "blue soft shell bag")
 reservation.add_bag(bag1)
+reservation.add_bag(bag2)
 
 # 7. Agregar reservation al booking
 booking_service.add_reservation_to_booking(booking, reservation)
+booking_service.add_reservation_to_booking(booking2,reservation2)
 
 # 8. Crear pilots y flight attendants
 pilot = Pilot("P001", "Edwin", "Estrella", "edwin@wnco.com", bna, "B334F")
@@ -86,20 +103,27 @@ flight_staff_assignment.show_staff()
 
 print("\n========== TESTING TO_DICT ==========")
 booking_dict = booking.to_dict()
+booking_dict2 = booking2.to_dict()
 print(booking_dict)
 
 print("\n========== TESTING FROM_DICT ==========")
 reconstructed_booking = Booking.from_dict(booking_dict)
+reconstructed_booking2 = Booking.from_dict(booking_dict2)
+
 reconstructed_booking.show_info()
+reconstructed_booking2.show_info()
 
 
 storage_service = BookingStorageService()
 
 print("\n========== BOOKING BEFORE SAVING ==========")
 print(booking.to_dict())
+bookings = storage_service.load_bookings()
 
-storage_service.save_bookings([booking])
+bookings.append(booking)
+bookings.append(booking2)
 
+storage_service.save_bookings(bookings)
 loaded_bookings = storage_service.load_bookings()
 
 print("\n========== BOOKINGS LOADED FROM JSON ==========")
