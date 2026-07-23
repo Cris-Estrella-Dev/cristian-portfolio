@@ -29,8 +29,8 @@ def list_bookings():
 
 @app.get("/bookings/{confirmation_number}")
 def get_booking_by_confirmation_number(confirmation_number):
-    storage_service = BookingStorageService
-    bookings = storage_service.load_bookings
+    storage_service = BookingStorageService()
+    bookings = storage_service.load_bookings()
 
     for booking in bookings:
         if booking.get_confirmation_number() == confirmation_number.upper():
