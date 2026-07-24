@@ -95,5 +95,20 @@
                 "bags": []
             }
         ]
+    },
+    {
+        "booking_id": "BKG-516550",
+        "confirmation_number": "9GI102",
+        "customer": {
+            "customer_id": "C003",
+            "first_name": "Maria",
+            "last_name": "Lopez",
+            "email": "maria@example.com",
+            "phone_number": "718-555-1234"
+        },
+        "booking_date": "2026-07-24",
+        "status": "Active",
+        "total_price": 315.5,
+        "reservations": []
     }
 ]

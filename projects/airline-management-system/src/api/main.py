@@ -1,5 +1,8 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, status
 from services.booking_storage_service import BookingStorageService
+from api.schemas.booking_schema import BookingCreate
+from customers.customer import Customer
+from services.booking_service import BookingService
 
 app = FastAPI(
     title="Airline Management System API",
@@ -39,3 +42,35 @@ def get_booking_by_confirmation_number(confirmation_number):
     raise HTTPException(status_code=404,
         detail="Booking not found."
     )
+
+
+@app.post("/bookings", status_code=status.HTTP_201_CREATED)
+def create_booking(booking_data: BookingCreate):
+    try:
+        customer = Customer(
+            booking_data.customer.customer_id,
+            booking_data.customer.first_name,
+            booking_data.customer.last_name,
+            booking_data.customer.email,
+            booking_data.customer.phone_number
+        )
+
+        booking_service = BookingService()
+        storage_service = BookingStorageService()
+
+        new_booking = booking_service.create_booking(
+            customer,
+            booking_data.total_price
+        )
+
+        bookings = storage_service.load_bookings()
+        bookings.append(new_booking)
+        storage_service.save_bookings(bookings)
+
+        return new_booking.to_dict()
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=400,
+            detail=str(error)
+        )
