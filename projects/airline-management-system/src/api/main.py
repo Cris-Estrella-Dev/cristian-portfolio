@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, status
+from typing import List
 from services.booking_storage_service import BookingStorageService
-from api.schemas.booking_schema import BookingCreate
+from api.schemas.booking_schema import BookingCreate, BookingResponse
 from customers.customer import Customer
 from services.booking_service import BookingService
 
@@ -22,7 +23,7 @@ def health_check():
     }
 
 
-@app.get("/bookings")
+@app.get("/bookings", response_model=List[BookingResponse])
 def list_bookings():
     storage_service = BookingStorageService()
     bookings = storage_service.load_bookings()
@@ -30,7 +31,7 @@ def list_bookings():
 
 
 
-@app.get("/bookings/{confirmation_number}")
+@app.get("/bookings/{confirmation_number}", response_model=BookingResponse)
 def get_booking_by_confirmation_number(confirmation_number):
     storage_service = BookingStorageService()
     bookings = storage_service.load_bookings()
@@ -44,7 +45,11 @@ def get_booking_by_confirmation_number(confirmation_number):
     )
 
 
-@app.post("/bookings", status_code=status.HTTP_201_CREATED)
+@app.post(
+    "/bookings",
+    status_code=status.HTTP_201_CREATED,
+    response_model=BookingResponse
+)
 def create_booking(booking_data: BookingCreate):
     try:
         customer = Customer(
