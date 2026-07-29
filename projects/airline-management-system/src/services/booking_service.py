@@ -3,6 +3,7 @@ import random
 import string
 
 from operations.booking import Booking
+from operations.reservation import Reservation
 
 
 class BookingService:
@@ -34,5 +35,23 @@ class BookingService:
     def __generate_confirmation_number(self):
         characters = string.ascii_uppercase + string.digits
         return "".join(random.choice(characters) for _ in range(6))
+
+    ##Reservation
     
-    
+    def __generate_reservation_id(self):
+        characters = string.ascii_uppercase + string.digits
+        return "".join(random.choice(characters) for _ in range(6))
+
+    def create_reservation(self, flight, status, fare_type, boarding_position, check_in_status):
+        reservation_id = self.__generate_reservation_id()
+
+        return Reservation(
+            reservation_id,
+            flight,
+            status,
+            fare_type,
+            boarding_position,
+            check_in_status
+        )
+
+        

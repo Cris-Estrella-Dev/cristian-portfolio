@@ -64,3 +64,27 @@ class BookingResponse(BaseModel):
     status: str
     total_price: float
     reservations: List[ReservationResponse]
+
+class AirportCreate(BaseModel):
+    airport_code: str
+    name: str
+    city: str
+    state: str
+    country: str
+
+
+class FlightCreate(BaseModel):
+    flight_number: str
+    origin_airport: AirportCreate
+    destination_airport: AirportCreate
+    departure_time: str
+    arrival_time: str
+    status: str
+
+
+class ReservationCreate(BaseModel):
+    flight: FlightCreate
+    status: str
+    fare_type: str
+    boarding_position: str
+    check_in_status: str

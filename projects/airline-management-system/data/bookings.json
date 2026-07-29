@@ -109,6 +109,35 @@
         "booking_date": "2026-07-24",
         "status": "Active",
         "total_price": 315.5,
-        "reservations": []
+        "reservations": [
+            {
+                "reservation_id": "5TLL8S",
+                "flight": {
+                    "flight_number": "WN1095",
+                    "origin_airport": {
+                        "airport_code": "DEN",
+                        "name": "Denver International Airport",
+                        "city": "Denver",
+                        "state": "CO",
+                        "country": "USA"
+                    },
+                    "destination_airport": {
+                        "airport_code": "LAX",
+                        "name": "Los Angeles Airport",
+                        "city": "Los Angeles",
+                        "state": "CA",
+                        "country": "USA"
+                    },
+                    "departure_time": "3:00 PM",
+                    "arrival_time": "6:15 PM",
+                    "status": "Delayed"
+                },
+                "status": "Confirmed",
+                "fare_type": "WN-PLU",
+                "boarding_position": "1",
+                "check_in_status": "Checked-in",
+                "bags": []
+            }
+        ]
     }
 ]
